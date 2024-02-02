@@ -1,0 +1,53 @@
+@import-normalize;
+@import './fonts/fonts';
+@import './abstracts/variables';
+@import './abstracts/mixin';
+
+@import './blocks/header';
+@import './blocks/container';
+@import './blocks//products';
+@import './blocks/search';
+@import './blocks/template';
+@import './blocks/card';
+@import './blocks/button';
+@import './blocks/not-found';
+@import './blocks//cart';
+@import './blocks/_footer';
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // transition: color 0.1s, background-color 0.1s;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+
+  @include respond(tablet-land) {
+    font-size: 56.25%;
+  }
+  @include respond(tablet) {
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    font-size: 40%;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  color: inherit;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}

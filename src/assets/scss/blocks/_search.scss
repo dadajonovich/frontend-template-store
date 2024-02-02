@@ -1,0 +1,44 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+
+  width: toRem(220);
+  padding: toRem(10);
+
+  transition: outline 0.2s ease-in-out;
+
+  border-radius: toRem(40);
+  background: var(--primary-color);
+
+  font-size: toRem(24);
+
+  gap: toRem(16);
+  &:focus-within {
+    outline: toRem(2) solid red;
+  }
+
+  &__input {
+    width: 100%;
+
+    color: var(--secondary-color);
+    border: none;
+    outline: none;
+    background: none;
+
+    font-size: toRem(18);
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--secondary-color);
+  }
+
+  &__clear {
+    color: var(--secondary-color);
+  }
+}

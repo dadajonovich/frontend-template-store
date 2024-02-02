@@ -1,0 +1,18 @@
+.button {
+  display: inline-block;
+
+  min-width: toRem(100);
+  padding: toRem(10) toRem(20);
+
+  text-align: center;
+
+  border-radius: toRem(30);
+
+  font-size: toRem(14);
+
+  @include btn-hover;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

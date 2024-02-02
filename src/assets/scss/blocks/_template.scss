@@ -1,0 +1,41 @@
+.template {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin: toRem(12);
+
+  color: var(--primary-color);
+
+  gap: toRem(10);
+  &__title {
+    font-size: toRem(18);
+    font-weight: normal;
+  }
+  &__selected {
+    cursor: pointer;
+    text-decoration: underline dotted;
+
+    font-weight: bold;
+  }
+  &__list {
+    display: flex;
+
+    gap: toRem(10);
+    // grid-template-columns: repeat(auto, auto);
+
+    &-item {
+      padding: toRem(14) toRem(28);
+
+      cursor: pointer;
+      text-align: center;
+
+      border: 2px solid var(--primary-color);
+      border-radius: 15px;
+
+      &_active {
+        background-color: purple;
+      }
+    }
+  }
+}
