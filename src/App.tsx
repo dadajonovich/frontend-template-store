@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import useTheme from './hooks/useTheme';
 
-import Header from './components/header/Header';
+import Header from './components/menu/header/Header';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';

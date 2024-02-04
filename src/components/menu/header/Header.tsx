@@ -9,7 +9,7 @@ import {
   AiOutlineInfoCircle,
   AiOutlineBulb,
 } from 'react-icons/ai';
-import Navbar from './Navbar';
+import Navbar from '../navbar/Navbar';
 
 const items = [
   { value: 'Home', href: '/#', icon: AiFillHome },
