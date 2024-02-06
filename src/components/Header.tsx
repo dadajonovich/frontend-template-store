@@ -1,6 +1,8 @@
-import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import { useTheme } from '../features/theme/use-theme';
 
 export const Header = () => {
+  const [theme, toggleTheme] = useTheme();
   return (
     <>
       <header className="sticky flex items-center justify-between bg-base-300 text-secondary">
@@ -23,11 +25,11 @@ export const Header = () => {
           <label className="btn btn-ghost swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
+              onClick={toggleTheme}
               type="checkbox"
               className="theme-controller"
               value="synthwave"
             />
-
             {/* sun icon */}
             <svg
               className="swap-on h-10 w-10 fill-current"
