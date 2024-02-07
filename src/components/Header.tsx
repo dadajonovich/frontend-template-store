@@ -1,14 +1,15 @@
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { useTheme } from '../features/theme/use-theme';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [theme, toggleTheme] = useTheme();
   return (
     <>
       <header className="sticky flex items-center justify-between bg-base-300 text-secondary">
-        <a className="btn btn-ghost text-2xl font-bold uppercase">
+        <Link to="/" className="btn btn-ghost text-2xl font-bold uppercase">
           Template Store
-        </a>
+        </Link>
         <div className="flex items-center">
           <input
             type="text"
@@ -18,10 +19,10 @@ export const Header = () => {
           <a className="btn btn-ghost">
             <AiOutlineUser className="h-10 w-10" />
           </a>
-          <a className="btn btn-ghost indicator">
+          <Link to="/cart" className="btn btn-ghost indicator">
             <span className="badge indicator-item badge-secondary">6</span>
             <AiOutlineShoppingCart className="h-10 w-10" />
-          </a>
+          </Link>
           <label className="btn btn-ghost swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
