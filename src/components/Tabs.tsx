@@ -1,15 +1,15 @@
-export const Tabs = () => {
+type TabsProps = {
+  items: string[];
+};
+
+export const Tabs = ({ items }: TabsProps) => {
   return (
     <div role="tablist" className="tabs-boxed tabs w-fit">
-      <a role="tab" className="tab">
-        Tab 1
-      </a>
-      <a role="tab" className="tab tab-active">
-        Tab 2
-      </a>
-      <a role="tab" className="tab">
-        Tab 3
-      </a>
+      {items.map((item, index) => (
+        <a key={index} role="tab" className="tab">
+          {item}
+        </a>
+      ))}
     </div>
   );
 };
