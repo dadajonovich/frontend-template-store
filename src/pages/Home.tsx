@@ -1,18 +1,15 @@
 import { Card } from '../components/Card';
 import { Select } from '../components/Select';
 import { Tabs } from '../components/Tabs';
-import { loadProducts } from '../features/products/product-slice';
+import { loadProducts, loadСategories } from '../features/data/data-slice';
 import { useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
-import { selectAllProducts } from '../features/products/product-selectors';
+import { selectData } from '../features/data/data-selectors';
 import { useEffect } from 'react';
-import { selectCategories } from '../features/controls/controls-selectors';
-import { loadСategories } from '../features/controls/controls-slice';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
-  const { products } = useSelector(selectAllProducts);
-  const { categories } = useSelector(selectCategories);
+  const { products, categories } = useSelector(selectData);
 
   useEffect(() => {
     dispatch(loadСategories());
