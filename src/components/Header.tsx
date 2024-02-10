@@ -3,7 +3,7 @@ import { useTheme } from '../features/theme/use-theme';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
-  const [theme, toggleTheme] = useTheme();
+  const [, toggleTheme] = useTheme();
   return (
     <>
       <header className="sticky flex items-center justify-between bg-base-300 text-secondary">
