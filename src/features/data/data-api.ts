@@ -8,7 +8,6 @@ export const dataApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query<ProductDto[], number | void>({
       query: (id) => {
-        console.log('get products');
         if (id !== undefined) {
           return `products?category=${id}`;
         }
@@ -17,7 +16,6 @@ export const dataApi = createApi({
     }),
     getCategories: builder.query<CategoryDto[], void>({
       query: () => {
-        console.log('get categories');
         return 'categories';
       },
     }),
