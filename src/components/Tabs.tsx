@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type TabsProps = {
+  onChange: (index: number) => any;
   items: string[];
 };
 
-export const Tabs = ({ items }: TabsProps) => {
-  const [categoryId, setCategoryId] = useState<number>(0);
+export const Tabs = ({ onChange, items }: TabsProps) => {
+  const [currentIndex, setIndex] = useState<number>(0);
+
+  useEffect(() => void onChange(currentIndex), [currentIndex, onChange]);
 
   return (
     <div role="tablist" className="tabs-boxed tabs w-fit">
@@ -13,8 +16,8 @@ export const Tabs = ({ items }: TabsProps) => {
         <a
           key={index}
           role="tab"
-          className={categoryId === index ? 'tab tab-active' : 'tab'}
-          onClick={() => setCategoryId(index)}
+          className={currentIndex === index ? 'tab tab-active' : 'tab'}
+          onClick={() => setIndex(index)}
         >
           {item}
         </a>
