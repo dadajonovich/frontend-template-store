@@ -1,21 +1,23 @@
-import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import {
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+  AiOutlineClose,
+} from 'react-icons/ai';
 import { useTheme } from '../features/theme/use-theme';
 import { Link } from 'react-router-dom';
+import { Search } from './Search';
 
 export const Header = () => {
   const [, toggleTheme] = useTheme();
+
   return (
     <>
       <header className="sticky flex items-center justify-between bg-base-300 text-secondary">
         <Link to="/" className="btn btn-ghost text-2xl font-bold uppercase">
           Template Store
         </Link>
-        <div className="flex items-center">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered input-secondary w-full max-w-xs"
-          />
+        <div className="flex items-center gap-4">
+          <Search />
           <a className="btn btn-ghost">
             <AiOutlineUser className="h-10 w-10" />
           </a>
