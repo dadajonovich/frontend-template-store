@@ -9,6 +9,14 @@ import {
 } from '../features/data/data-api';
 import { Skeleton } from '../components/Skeleton';
 
+enum sortItems {
+  sortBy = 'Сортировать по...',
+  priceAsc = 'цене (ASC)',
+  priceDesc = 'цене (DESC)',
+  abcAsc = 'алфавиту (ASC)',
+  abcDesc = 'алфавиту (DESC)',
+}
+
 export const Home = () => {
   const [getProducts, { data: products }] = useLazyGetProductsQuery();
 
@@ -20,28 +28,36 @@ export const Home = () => {
     (index: number) => {
       if (!categories) return;
       const category = categories[index - 1];
-      getProducts(category?.id);
+      getProducts({ id: category?.id });
     },
     [categories],
+  );
+
+  const handleChangeSort = useCallback(
+    (index: number) => {
+      if (!sortItems) return;
+      getProducts({ sortItem: Object.keys(sortItems)[index] });
+    },
+    [sortItems],
   );
 
   return (
     <>
       <section className="mt-6 flex items-center justify-between">
         {!categories ? (
-          <Skeleton width={310} height={40} />
+          <Skeleton width={300} height={38} />
         ) : (
           <Tabs
             onChange={handleChangeCategory}
             items={['Все', ...categories.map((item) => item.title)]}
           />
         )}
-        <Select />
+        <Select onChange={handleChangeSort} items={Object.values(sortItems)} />
       </section>
       <section className="mt-8 grid grid-cols-2 justify-items-center gap-y-16">
         {!products
-          ? [...new Array(6)].map((_, index) => (
-              <Skeleton width={96} height={96} key={index} />
+          ? [...new Array(4)].map((_, index) => (
+              <Skeleton className={'h-96 w-96'} key={index} />
             ))
           : products.map((item) => <Card key={item.id} {...item} />)}
       </section>

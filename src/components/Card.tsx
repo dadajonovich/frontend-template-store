@@ -14,7 +14,11 @@ export const Card = ({ title, description, imageUrl, price }: ProductDto) => {
     <div className="card w-96">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={imageUrl} alt={title} />
+          <img
+            className="aspect-square object-cover"
+            src={imageUrl}
+            alt={title}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
