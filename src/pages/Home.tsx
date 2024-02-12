@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Card } from '../components/Card';
 import { Select } from '../components/Select';
 import { Tabs } from '../components/Tabs';
@@ -8,6 +8,7 @@ import {
   useGetCategoriesQuery,
 } from '../features/data/data-api';
 import { Skeleton } from '../components/Skeleton';
+import { QueryProducts } from '../types';
 
 enum sortItems {
   sortBy = 'Сортировать по...',
@@ -18,17 +19,23 @@ enum sortItems {
 }
 
 export const Home = () => {
+  const [queryProducts, setQueryProducts] = useState<QueryProducts>({});
   const [getProducts, { data: products }] = useLazyGetProductsQuery();
-
   const { data: categories } = useGetCategoriesQuery();
 
-  useEffect(() => void getProducts(), [getProducts]);
+  useEffect(
+    () => void getProducts(queryProducts),
+    [getProducts, queryProducts],
+  );
 
   const handleChangeCategory = useCallback(
     (index: number) => {
       if (!categories) return;
       const category = categories[index - 1];
-      getProducts({ id: category?.id });
+      setQueryProducts((prevState) => ({
+        ...prevState,
+        categoryId: category?.id,
+      }));
     },
     [categories],
   );
@@ -36,7 +43,10 @@ export const Home = () => {
   const handleChangeSort = useCallback(
     (index: number) => {
       if (!sortItems) return;
-      getProducts({ sortItem: Object.keys(sortItems)[index] });
+      setQueryProducts((prevState) => ({
+        ...prevState,
+        sortId: Object.keys(sortItems)[index],
+      }));
     },
     [sortItems],
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 type TabsProps = {
-  onChange: (index: number) => any;
+  onChange: (index: number) => unknown;
   items: string[];
 };
 
