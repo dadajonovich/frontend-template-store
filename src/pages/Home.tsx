@@ -8,15 +8,14 @@ import {
   useGetCategoriesQuery,
 } from '../features/data/data-api';
 import { Skeleton } from '../components/Skeleton';
-import { QueryProducts } from '../types';
+import { QueryProducts, SortId } from '../types';
 
-enum sortItems {
-  sortBy = 'Сортировать по...',
-  priceAsc = 'цене (ASC)',
-  priceDesc = 'цене (DESC)',
-  abcAsc = 'алфавиту (ASC)',
-  abcDesc = 'алфавиту (DESC)',
-}
+const sortItems = {
+  priceAsc: 'цене (ASC)',
+  priceDesc: 'цене (DESC)',
+  abcAsc: 'алфавиту (ASC)',
+  abcDesc: 'алфавиту (DESC)',
+} satisfies Record<SortId, string>;
 
 export const Home = () => {
   const [queryProducts, setQueryProducts] = useState<QueryProducts>({});
@@ -45,7 +44,7 @@ export const Home = () => {
       if (!sortItems) return;
       setQueryProducts((prevState) => ({
         ...prevState,
-        sortId: Object.keys(sortItems)[index],
+        sortId: Object.keys(sortItems)[index] as SortId,
       }));
     },
     [sortItems],
@@ -62,7 +61,10 @@ export const Home = () => {
             items={['Все', ...categories.map((item) => item.title)]}
           />
         )}
-        <Select onChange={handleChangeSort} items={Object.values(sortItems)} />
+        <Select
+          onChange={handleChangeSort}
+          items={['Сортировать по...', ...Object.values(sortItems)]}
+        />
       </section>
       <section className="mt-8 grid grid-cols-2 justify-items-center gap-y-16">
         {!products

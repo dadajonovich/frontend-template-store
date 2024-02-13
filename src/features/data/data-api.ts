@@ -11,9 +11,9 @@ export const dataApi = createApi({
       query: (args) => {
         if (!args) return 'products';
 
-        const strs: string[] = Object.entries(args).map(
-          ([key, value]) => `${key}=${value}`,
-        );
+        const strs: string[] = Object.entries(args)
+          .filter(([, value]) => value !== undefined)
+          .map(([key, value]) => `${key}=${value}`);
 
         if (strs.length === 0) return 'products';
 

@@ -1,4 +1,8 @@
+export type SortId = 'priceAsc' | 'priceDesc' | 'abcAsc' | 'abcDesc';
+
 export type QueryProducts = {
   categoryId?: number;
-  sortId?: string;
+  sortId?: SortId;
+  search?: string;
+  page?: number;
 };
