@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSearch } from '../features/search/use-search';
 import { useClean } from '../features/search/use-clean';

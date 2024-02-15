@@ -1,4 +1,4 @@
-import { ProductDto } from '../types/product';
+import { ProductDto } from '../../types/product';
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('ru-RU', {

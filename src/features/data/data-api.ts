@@ -28,4 +28,8 @@ export const dataApi = createApi({
   }),
 });
 
-export const { useLazyGetProductsQuery, useGetCategoriesQuery } = dataApi;
+export const {
+  useLazyGetProductsQuery,
+  useGetCategoriesQuery,
+  useGetProductsQuery,
+} = dataApi;
