@@ -1,19 +1,15 @@
-import { useSelector } from 'react-redux';
-import { useLazyGetProductsQuery } from '../../features/data/data-api';
-import { useEffect } from 'react';
+import { useGetProductsQuery } from '../../features/data/data-api';
 import { Skeleton } from '../Skeleton';
-import { selectQuery } from '../../features/control/control-selectors';
 import { Card } from './Card';
 import { Pagination } from './Pagination';
+import { QueryProducts } from '../../types';
 
-export const Products = () => {
-  const [getProducts, { data: products }] = useLazyGetProductsQuery();
-  const queryProducts = useSelector(selectQuery);
+type ProductsProps = {
+  query: QueryProducts;
+};
 
-  useEffect(
-    () => void getProducts(queryProducts),
-    [getProducts, queryProducts],
-  );
+export const Products = ({ query }: ProductsProps) => {
+  const { data: products } = useGetProductsQuery(query);
 
   return (
     <>

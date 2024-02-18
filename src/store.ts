@@ -4,14 +4,12 @@ import { useDispatch } from 'react-redux';
 import { themeReducer } from './features/theme/theme-slice';
 import { searchReducer } from './features/search/search-slice';
 import { dataApi } from './features/data/data-api';
-import { controlReducer } from './features/control/control-slice';
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
     [dataApi.reducerPath]: dataApi.reducer,
     search: searchReducer,
-    control: controlReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>

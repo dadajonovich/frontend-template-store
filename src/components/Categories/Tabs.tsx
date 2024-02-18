@@ -8,7 +8,7 @@ type TabsProps = {
 export const Tabs = ({ onChange, items }: TabsProps) => {
   const [currentIndex, setIndex] = useState<number>(0);
 
-  useEffect(() => void onChange(currentIndex), [currentIndex, onChange]);
+  useEffect(() => void onChange(currentIndex), [currentIndex]);
 
   return (
     <div role="tablist" className="tabs-boxed tabs w-fit">
