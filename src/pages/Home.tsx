@@ -8,7 +8,7 @@ import { selectSearch } from '../features/search/search-selectors';
 import { useSearchVisible } from '../features/search/use-visible';
 
 export const Home = () => {
-  const [query, setQuery] = useState<QueryProducts>({});
+  const [query, setQuery] = useState<QueryProducts>({ limit: 6 });
   const searchValue = useSelector(selectSearch);
   useEffect(
     () => setQuery((state) => ({ ...state, search: searchValue })),

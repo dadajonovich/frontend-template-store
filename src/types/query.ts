@@ -5,4 +5,5 @@ export type QueryProducts = {
   sortId?: SortId;
   search?: string;
   page?: number;
+  limit?: number;
 };

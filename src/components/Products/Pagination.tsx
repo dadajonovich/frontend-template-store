@@ -1,11 +1,26 @@
-export const Pagination = () => {
+import { useEffect, useState } from 'react';
+
+type PaginationProps = {
+  count: number;
+  onChange: (page: number) => unknown;
+};
+
+export const Pagination = ({ count, onChange }: PaginationProps) => {
+  const [page, setPage] = useState<number>(0);
+  useEffect(() => void onChange(page), [page]);
   return (
     <div className="join mt-8 flex justify-center">
-      <button className="btn join-item">1</button>
-      <button className="btn join-item">2</button>
-      <button className="btn btn-disabled join-item">...</button>
-      <button className="btn join-item">99</button>
-      <button className="btn join-item">100</button>
+      {[...new Array(count)].map((_, index) => (
+        <input
+          key={index}
+          className="btn btn-square join-item"
+          type="radio"
+          name="options"
+          aria-label={String(index + 1)}
+          checked={page === index}
+          onClick={() => setPage(index)}
+        />
+      ))}
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { QueryProducts } from '../../types';
 
-import { CategoryDto, ProductDto } from '../../types';
+import { CategoryDto, ProductsDto } from '../../types';
 
 export const dataApi = createApi({
   reducerPath: '@@data',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
   endpoints: (builder) => ({
-    getProducts: builder.query<ProductDto[], QueryProducts | void>({
+    getProducts: builder.query<ProductsDto, QueryProducts | void>({
       query: (args) => {
         if (!args) return 'products';
 
