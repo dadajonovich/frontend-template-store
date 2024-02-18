@@ -1,4 +1,7 @@
+import { useSearchVisible } from '../features/search/use-visible';
+
 export const Cart = () => {
+  useSearchVisible(false);
   return (
     <div className="mt-8 overflow-x-auto">
       <table className="table ">

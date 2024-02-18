@@ -1,4 +1,4 @@
-import { useGetCategoriesQuery } from '../../features/data/data-api';
+import { useCategories } from '../../hooks/use-categories';
 import { Skeleton } from '../Skeleton';
 import { Tabs } from './Tabs';
 
@@ -7,21 +7,10 @@ type CategoriesProps = {
 };
 
 export const Categories = ({ onChange }: CategoriesProps) => {
-  const { data: categories } = useGetCategoriesQuery();
+  const categories = useCategories(onChange);
 
-  const categoryNames = categories
-    ? ['Все', ...categories.map((item) => item.title)]
-    : null;
-
-  return categoryNames ? (
-    <Tabs
-      onChange={(index: number) => {
-        if (!categories) return;
-        const category = categories[index - 1];
-        onChange(category?.id);
-      }}
-      items={categoryNames}
-    />
+  return categories.items ? (
+    <Tabs {...categories} />
   ) : (
     <Skeleton width={300} height={38} />
   );

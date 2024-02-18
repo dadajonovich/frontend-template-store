@@ -15,8 +15,12 @@ const searchSlice = createSlice({
     clearValue: (state) => {
       state.value = '';
     },
+    setVisible: (state, action: PayloadAction<boolean>) => {
+      state.isVisible = action.payload;
+      state.value = '';
+    },
   },
 });
 
-export const { setValue, clearValue } = searchSlice.actions;
+export const { setValue, clearValue, setVisible } = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;
