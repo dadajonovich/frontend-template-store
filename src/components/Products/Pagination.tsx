@@ -6,6 +6,7 @@ type PaginationProps = {
 };
 
 export const Pagination = ({ count, onChange }: PaginationProps) => {
+  console.log(count);
   const [page, setPage] = useState<number>(0);
   useEffect(() => void onChange(page), [page]);
   return (
