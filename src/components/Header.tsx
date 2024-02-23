@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="sticky flex items-center justify-between bg-base-300 text-secondary">
+      <header className="sticky flex items-center justify-between text-secondary">
         <Link to="/" className="btn btn-ghost text-2xl font-bold uppercase">
           Template Store
         </Link>

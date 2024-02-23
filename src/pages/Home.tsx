@@ -10,7 +10,8 @@ import { useGetProductsQuery } from '../features/data/data-api';
 import { Pagination } from '../components/Products/Pagination';
 
 export const Home = () => {
-  const [query, setQuery] = useState<QueryProducts>({ limit: 6 });
+  const limit = 6;
+  const [query, setQuery] = useState<QueryProducts>({ limit });
   const { data } = useGetProductsQuery(query);
   const searchValue = useSelector(selectSearch);
   useEffect(
@@ -33,7 +34,7 @@ export const Home = () => {
       <Products data={data} />
       <Pagination
         onChange={(page) => setQuery((state) => ({ ...state, page }))}
-        count={Math.ceil((data?.totalCount || 0) / 6)}
+        count={Math.ceil((data?.totalCount || 0) / limit)}
       />
     </>
   );

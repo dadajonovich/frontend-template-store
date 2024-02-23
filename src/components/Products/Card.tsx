@@ -1,11 +1,5 @@
 import { ProductDto } from '../../types/product';
-
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-  }).format(price);
-};
+import { formatPrice } from '../../utils/formatPrice';
 
 // type CardProps = Omit<ProductDto, 'CategoryId'>;
 
@@ -25,7 +19,7 @@ export const Card = ({ title, description, imageUrl, price }: ProductDto) => {
           <p>{description}</p>
           <div className="card-actions items-center justify-end">
             <p className="text-2xl font-bold	">от {formatPrice(price)}</p>
-            <button className="btn btn-primary">Добавить</button>
+            <button className="btn btn-primary">Add</button>
           </div>
         </div>
       </div>

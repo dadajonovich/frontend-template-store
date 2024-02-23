@@ -6,7 +6,6 @@ type PaginationProps = {
 };
 
 export const Pagination = ({ count, onChange }: PaginationProps) => {
-  console.log(count);
   const [page, setPage] = useState<number>(0);
   useEffect(() => void onChange(page), [page]);
   return (
@@ -18,7 +17,7 @@ export const Pagination = ({ count, onChange }: PaginationProps) => {
           type="radio"
           name="options"
           aria-label={String(index + 1)}
-          checked={page === index}
+          defaultChecked={page === index}
           onClick={() => setPage(index)}
         />
       ))}

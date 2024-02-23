@@ -6,7 +6,7 @@ import { selectSearch } from './search-selectors';
 
 type onSearch = ChangeEventHandler<HTMLInputElement>;
 
-export const useSearch = (): [string, onSearch] => {
+export const useSearch = (): [string, onSearch, () => void] => {
   const dispatch = useAppDispatch();
   const search = useSelector(selectSearch);
 
@@ -14,5 +14,9 @@ export const useSearch = (): [string, onSearch] => {
     dispatch(setValue(e.target.value));
   };
 
-  return [search, handleSearch];
+  const handleCleanSearch = () => {
+    dispatch(setValue(''));
+  };
+
+  return [search, handleSearch, handleCleanSearch];
 };

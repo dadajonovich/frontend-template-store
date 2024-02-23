@@ -1,13 +1,11 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSearch } from '../features/search/use-search';
-import { useClean } from '../features/search/use-clean';
 import { useSelector } from 'react-redux';
 import { selectSearchVisible } from '../features/search/search-selectors';
 
 export const Search = () => {
   const isVisible = useSelector(selectSearchVisible);
-  const [search, handleSearch] = useSearch();
-  const clean = useClean();
+  const [search, handleSearch, handleCleanSearch] = useSearch();
 
   return (
     <div className={isVisible ? 'relative' : 'hidden'}>
@@ -20,7 +18,7 @@ export const Search = () => {
       />
       {search && (
         <AiOutlineClose
-          onClick={clean}
+          onClick={handleCleanSearch}
           className="absolute right-4 top-[50%] h-5 w-5 translate-y-[-50%]"
         />
       )}

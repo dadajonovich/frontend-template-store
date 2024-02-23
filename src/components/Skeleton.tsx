@@ -10,7 +10,7 @@ export const Skeleton = ({ className, width, height }: SkeletonProps) => {
   return (
     <div
       style={{ width: `${width}px`, height: `${height}px` }}
-      className={classNames(className, 'skeleton bg-base-content')}
+      className={classNames(className, 'skeleton bg-base-200')}
     ></div>
   );
 };
