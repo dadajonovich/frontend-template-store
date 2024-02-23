@@ -1,10 +1,13 @@
-type Debounced = () => void;
+type Debounced<T extends any[]> = (...args: T) => void;
 
-export const useDebounce = (cb: () => void, delay: number): Debounced => {
-  let timeout: number = NaN;
+export const useDebounce = <T extends any[]>(
+  cb: (...args: T) => void,
+  delay: number,
+): Debounced<T> => {
+  let timeout: number | undefined;
 
-  return () => {
+  return (...args: T) => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => cb(), delay);
+    timeout = setTimeout(() => cb(...args), delay);
   };
 };
