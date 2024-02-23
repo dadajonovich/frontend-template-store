@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { themeReducer } from './features/theme/theme-slice';
 import { searchReducer } from './features/search/search-slice';
 import { dataApi } from './features/data/data-api';
+import { cartReducer } from './features/cart/cart-slice';
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
     [dataApi.reducerPath]: dataApi.reducer,
     search: searchReducer,
+    cart: cartReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>

@@ -1,9 +1,14 @@
+import { addProduct } from '../../features/cart/cart-slice';
+import { useAppDispatch } from '../../store';
 import { ProductDto } from '../../types/product';
 import { formatPrice } from '../../utils/formatPrice';
 
 // type CardProps = Omit<ProductDto, 'CategoryId'>;
 
-export const Card = ({ title, description, imageUrl, price }: ProductDto) => {
+export const Card = (props: ProductDto) => {
+  const { title, description, imageUrl, price } = props;
+  const dispatch = useAppDispatch();
+
   return (
     <div className="card w-96">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -19,7 +24,14 @@ export const Card = ({ title, description, imageUrl, price }: ProductDto) => {
           <p>{description}</p>
           <div className="card-actions items-center justify-end">
             <p className="text-2xl font-bold	">от {formatPrice(price)}</p>
-            <button className="btn btn-primary">Add</button>
+            <button
+              onClick={() => {
+                dispatch(addProduct(props));
+              }}
+              className="btn btn-primary"
+            >
+              Add
+            </button>
           </div>
         </div>
       </div>

@@ -9,14 +9,32 @@ const cartSlice = createSlice({
   name: '@@cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<ProductDto>) => {
-      state.products = [...state.products, action.payload];
+    addProduct: (state, action: PayloadAction<ProductDto>) => {
+      return { ...state, products: [...state.products, action.payload] };
     },
-    clear: (state) => {
-      state.products = [];
+    clearCart: (state) => {
+      return { ...state, products: [] };
     },
-    remove: (state, action: PayloadAction<ProductDto>) => {
-      state.products.filter((product) => product.id != action.payload.id);
+    removeTier: (state, action: PayloadAction<ProductDto>) => {
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product.id != action.payload.id,
+        ),
+      };
+    },
+    removeOne: (state, action: PayloadAction<ProductDto>) => {
+      const removeIndex = state.products.findIndex(
+        (product) => product.id != action.payload.id,
+      );
+      return {
+        ...state,
+        products: state.products.filter((_, index) => index != removeIndex),
+      };
     },
   },
 });
+
+export const cartReducer = cartSlice.reducer;
+export const { addProduct, clearCart, removeTier, removeOne } =
+  cartSlice.actions;

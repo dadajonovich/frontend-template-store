@@ -2,9 +2,11 @@ import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { useTheme } from '../features/theme/use-theme';
 import { Link } from 'react-router-dom';
 import { Search } from './Search';
-
+import { useSelector } from 'react-redux';
+import { cartCount } from '../features/cart/cart-selectors';
 export const Header = () => {
   const [, toggleTheme] = useTheme();
+  const countCart = useSelector(cartCount);
 
   return (
     <>
@@ -18,7 +20,9 @@ export const Header = () => {
             <AiOutlineUser className="h-10 w-10" />
           </a>
           <Link to="/cart" className="btn btn-ghost indicator">
-            <span className="badge indicator-item badge-secondary">6</span>
+            <span className="badge indicator-item badge-secondary">
+              {countCart}
+            </span>
             <AiOutlineShoppingCart className="h-10 w-10" />
           </Link>
           <label className="btn btn-ghost swap swap-rotate">
