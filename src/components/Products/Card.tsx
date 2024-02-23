@@ -20,8 +20,8 @@ export const Card = (props: ProductDto) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>{description}</p>
+          <h2 className="card-title truncate">{title}</h2>
+          <p className="truncate">{description}</p>
           <div className="card-actions items-center justify-end">
             <p className="text-2xl font-bold	">от {formatPrice(price)}</p>
             <button

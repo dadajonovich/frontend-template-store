@@ -12,6 +12,9 @@ const cartSlice = createSlice({
     addProduct: (state, action: PayloadAction<ProductDto>) => {
       return { ...state, products: [...state.products, action.payload] };
     },
+    setProducts: (state, action: PayloadAction<ProductDto[]>) => {
+      return { ...state, products: action.payload };
+    },
     clearCart: (state) => {
       return { ...state, products: [] };
     },
@@ -25,7 +28,7 @@ const cartSlice = createSlice({
     },
     removeOne: (state, action: PayloadAction<ProductDto>) => {
       const removeIndex = state.products.findIndex(
-        (product) => product.id != action.payload.id,
+        (product) => product.id === action.payload.id,
       );
       return {
         ...state,
@@ -36,5 +39,5 @@ const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-export const { addProduct, clearCart, removeTier, removeOne } =
+export const { addProduct, clearCart, removeTier, removeOne, setProducts } =
   cartSlice.actions;

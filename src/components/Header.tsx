@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Search } from './Search';
 import { useSelector } from 'react-redux';
 import { cartCount } from '../features/cart/cart-selectors';
+
 export const Header = () => {
   const [, toggleTheme] = useTheme();
   const countCart = useSelector(cartCount);
