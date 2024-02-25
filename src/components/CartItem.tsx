@@ -6,7 +6,7 @@ import { formatPrice } from '../utils/formatPrice';
 export const CartItem = (props: CartTier) => {
   const dispatch = useAppDispatch();
   const { count, product } = props;
-  const { imageUrl, title, price, id, description } = product;
+  const { imageUrl, title, price, description } = product;
   return (
     <tr>
       <td>

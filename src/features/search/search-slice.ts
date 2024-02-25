@@ -10,17 +10,13 @@ const searchSlice = createSlice({
   initialState,
   reducers: {
     setValue: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
-    },
-    clearValue: (state) => {
-      state.value = '';
+      return { ...state, value: action.payload };
     },
     setVisible: (state, action: PayloadAction<boolean>) => {
-      state.isVisible = action.payload;
-      state.value = '';
+      return { ...state, isVisible: action.payload, value: '' };
     },
   },
 });
 
-export const { setValue, clearValue, setVisible } = searchSlice.actions;
+export const { setValue, setVisible } = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;

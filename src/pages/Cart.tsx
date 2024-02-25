@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useSearchVisible } from '../features/search/use-visible';
 import { formatPrice } from '../utils/formatPrice';
-import { AiOutlineDelete } from 'react-icons/ai';
+// import { AiOutlineDelete } from 'react-icons/ai';
 import { cartTiers, cartSum } from '../features/cart/cart-selectors';
 import { CartItem } from '../components/CartItem';
 
@@ -12,24 +12,24 @@ export const Cart = () => {
   useSearchVisible(false);
   return (
     <section className="text-right">
-      <div className="mt-8 overflow-x-auto">
-        <table className="table ">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th></th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {tiers.map((item) => (
-              <CartItem {...item} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {sum !== 0 && (
+        <div className="mt-8 overflow-x-auto">
+          <table className="table ">
+            <thead>
+              <tr>
+                <th>Items</th>
+                <th></th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tiers.map((item) => (
+                <CartItem {...item} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
       <div className="stat mt-8">
         <div className="stat-title">Order sum</div>
         <div className="stat-value">{formatPrice(sum)}</div>

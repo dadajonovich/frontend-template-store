@@ -15,7 +15,7 @@ For the server part, see the repository [backend-template-store](https://github.
 
 - Switching the light/dark theme
 - Filtering products by category
-- Sort products alphabetically/price in ascending/descending order
+- Sort products alphabetically and price ASC/DESC
 - Search for products by name
 - Server pagination
 - Forming and sending an order to the server with feedback

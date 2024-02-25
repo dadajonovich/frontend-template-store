@@ -21,9 +21,11 @@ export const Header = () => {
             <AiOutlineUser className="h-10 w-10" />
           </a>
           <Link to="/cart" className="btn btn-ghost indicator">
-            <span className="badge indicator-item badge-secondary">
-              {countCart}
-            </span>
+            {countCart !== 0 && (
+              <span className="badge indicator-item badge-secondary">
+                {countCart}
+              </span>
+            )}
             <AiOutlineShoppingCart className="h-10 w-10" />
           </Link>
           <label className="btn btn-ghost swap swap-rotate">
