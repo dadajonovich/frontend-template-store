@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useSearchVisible } from '../features/search/use-visible';
-import { formatPrice } from '../utils/formatPrice';
 // import { AiOutlineDelete } from 'react-icons/ai';
 import { cartTiers, cartSum } from '../features/cart/cart-selectors';
 import { CartItem } from '../components/CartItem';
+import { Stat } from '../components/Stat';
 
 export const Cart = () => {
   const tiers = useSelector(cartTiers);
@@ -30,18 +30,7 @@ export const Cart = () => {
           </table>
         </div>
       )}
-      <div className="stat mt-8">
-        <div className="stat-title">Order sum</div>
-        <div className="stat-value">{formatPrice(sum)}</div>
-        <div className="stat-actions">
-          <button
-            onClick={() => document.getElementById('my_modal_1')!.showModal()}
-            className="btn btn-success btn-sm"
-          >
-            Place an order
-          </button>
-        </div>
-      </div>
+      <Stat sum={sum} />
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="text-lg font-bold">Hello!</h3>
